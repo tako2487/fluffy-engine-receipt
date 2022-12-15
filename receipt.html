@@ -1,0 +1,42 @@
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuidv4.min.js" integrity="sha512-BCMqEPl2dokU3T/EFba7jrfL4FxgY6ryUh4rRC9feZw4yWUslZ3Uf/lPZ5/5UlEjn4prlQTRfIPYQkDrLCZJXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+	登録ありがとうございます。
+	<p id="a-text"></p>
+	<p id="p-text"></p>
+	レシート画像は自動的にダウンロードされます。
+
+
+	<canvas id="receipt-canvas" width="600" style="display: none;"></canvas>
+
+
+	<script>
+		const canvas = document.getElementById("receipt-canvas");
+		const ctx = canvas.getContext("2d");
+		const account = uuidv4();
+		const aText = `アカウント: ${account}`;
+		const pText = "パスワード: 123465789";
+
+		document.getElementById("a-text").innerText = aText;
+		document.getElementById("p-text").innerText = pText;
+
+		ctx.globalCompositeOperation = 'source-over';
+
+		ctx.fillStyle = "white";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		ctx.fillStyle = "black";
+		ctx.font = "12px Arial";
+		ctx.textAlign = "center";
+		ctx.fillText(aText, canvas.width / 2, canvas.height / 2);
+		ctx.fillText(pText, canvas.width / 2, (canvas.height / 2) + 30);
+
+		const link = document.createElement("a");
+		link.download = `receipt-${account}.png`;
+		link.href = canvas.toDataURL();
+		link.click();
+	</script>
+</body>
