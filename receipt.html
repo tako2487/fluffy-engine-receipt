@@ -9,7 +9,7 @@
 	<p id="p-text"></p>
 	レシート画像は自動的にダウンロードされます。
 
-
+	<div style="bottom: 0px; font-size: 60px; position: absolute; left: 50vw; display: none;" id="download-reminder">↓</div>
 	<canvas id="receipt-canvas" width="600" style="display: none;"></canvas>
 
 
@@ -34,9 +34,12 @@
 		ctx.fillText(aText, canvas.width / 2, canvas.height / 2);
 		ctx.fillText(pText, canvas.width / 2, (canvas.height / 2) + 30);
 
-		const link = document.createElement("a");
-		link.download = `receipt-${account}.png`;
-		link.href = canvas.toDataURL();
-		link.click();
+		setTimeout(function () {
+			const link = document.createElement("a");
+			link.download = `receipt-${account}.png`;
+			link.href = canvas.toDataURL();
+			document.getElementById("download-reminder").style.display = "block";
+			link.click();
+		}, 1000)
 	</script>
 </body>
