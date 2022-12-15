@@ -1,6 +1,12 @@
 <head>
 	<meta charset="UTF-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuidv4.min.js" integrity="sha512-BCMqEPl2dokU3T/EFba7jrfL4FxgY6ryUh4rRC9feZw4yWUslZ3Uf/lPZ5/5UlEjn4prlQTRfIPYQkDrLCZJXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<style>
+		.arrow-bottom {
+			background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC") no-repeat scroll 0 0 transparent;
+			background-size: contain;
+		}
+	</style>
 </head>
 <body>
 
@@ -9,7 +15,8 @@
 	<p id="p-text"></p>
 	レシート画像は自動的にダウンロードされます。
 
-	<div style="bottom: 0px; font-size: 60px; position: absolute; left: 50vw; display: none;" id="download-reminder">↓</div>
+	<div class="arrow-bottom" style="bottom: 0; position: absolute; left: 40vw; width: 20vw; height: 20vw;" id="download-reminder">
+	</div>
 	<canvas id="receipt-canvas" width="600" style="display: none;"></canvas>
 
 
